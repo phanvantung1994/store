@@ -51,6 +51,33 @@ cp .env-example .env
 ```
 pm2 start "uvicorn app:app --host 0.0.0.0 --port 24006" --name browser-n8n-local-server
 ```
+8. Chạy Server win 11
+Nhớ là phải thêm PATH cho hệ thống win 11 và restart lại pc không là nó ko ăn. ví dụ ở đây là:
+C:\Users\Eyeclick\Documents\Home\N8N\n8n-browser-locall\browser-n8n-local\.venv\Scripts\
+Cấu hình ecosystem.config.js (Cách tốt nhất nếu dùng PM2 lâu dài) ( thêm 2 file start_uvicorn.ps1 và ecosystem.config.js) sau đó chạy lệnh:
+```
+pm2 start ecosystem.config.js
+```
+File start_uvicorn.ps1: 
+```
+.venv\Scripts\Activate
+uvicorn app:app --host 0.0.0.0 --port 24006
+```
+File ecosystem.config.js:
+```
+module.exports = {
+  apps: [
+    {
+      name: 'browser-n8n-local-server',
+      script: 'uvicorn',
+      args: 'app:app --host 0.0.0.0 --port 24006',
+      interpreter: 'none',
+      cwd: './',
+    }
+  ]
+};
+
+```
 
 ```
 pm2 status
