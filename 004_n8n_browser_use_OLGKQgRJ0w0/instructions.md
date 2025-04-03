@@ -86,6 +86,19 @@ pm2 delete 0
 pm2 start 0
 pm2 logs
 ```
+### Khi shutdown PC bật lại server thì làm cách sau:
+a. vào thư mục dự án
+b. kích hoạt môi trường ảo:
+```
+.\.venv\Scripts\Activate
+
+```
+c. Nếu PM2 đã chạy trước đó, bạn có thể sử dụng lệnh sau để khôi phục các ứng dụng đã được quản lý:
+```
+pm2 resurrect
+
+```
+d. nếu ko thích thì chạy pm2 lại thủ công như trên.
 
 ## Install n8n-nodes-browser-use trên n8n
 
